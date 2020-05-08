@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Constants } from 'src/app/core/constants';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +8,6 @@ import { Constants } from 'src/app/core/constants';
 export class HomeComponent implements OnInit {
 
   constructor(
-    public constants: Constants
   ) { }
 
   ngOnInit(): void {

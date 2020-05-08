@@ -1,6 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { NavBarComponent } from './partials/nav-bar/nav-bar.component';
+import { FooterComponent } from './partials/footer/footer.component';
+import { Constants } from './core/constants';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,8 +12,9 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent, NavBarComponent, FooterComponent
       ],
+      providers: [Constants]
     }).compileComponents();
   }));
 
@@ -20,16 +24,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'src'`, () => {
+  it(`should have as title 'Digits'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('src');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('src app is running!');
+    expect(app.title).toEqual('Digits');
   });
 });
