@@ -27,7 +27,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [              
+            "styles": [
               "src/assets/css/styles.css",
               "src/styles.scss"
             ],
@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "src"
+  "defaultProject": "src",
+  "cli": {
+    "analytics": false
+  }
 }

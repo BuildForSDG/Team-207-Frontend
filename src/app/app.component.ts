@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { LuiHomeComponent } from './luihome/luihome.component';
+
+
 
 @Component({
   selector: 'app-root',
