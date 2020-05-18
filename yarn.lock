@@ -1210,7 +1210,7 @@
   integrity sha512-v9kIhKwjeZThiWrLmj0y17CWoyddASLj9O2yvbZkbvw/N3rWOYy9zkV66ursAoVr0mV15bL8g0c4QZUE6cdDoQ==
   dependencies:
     exec-sh "^0.3.2"
-    minimist "^1.2.2"
+    minimist "^0.2.1"
 
 "@iarna/toml@^2.2.0":
   version "2.2.5"
