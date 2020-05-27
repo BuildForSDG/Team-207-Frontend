@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import { RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {bandiBackendProvider } from './helpers';
 
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router';
+import { AccountRoutingModule } from './account/account-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { SharedModule } from './shared/shared.module';
@@ -21,7 +21,8 @@ import { AlertComponent } from './components';
 import { LoginComponent } from './account/login.component';
 import { LayoutComponent } from './account/layout.component';
 import { RegisterComponent }  from './account/register.component';
-import { LuiHomeComponent } from './luihome/luihome.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -29,17 +30,20 @@ import { LuiHomeComponent } from './luihome/luihome.component';
     AppComponent,
     AlertComponent,
     RegisterComponent,
-    LuiHomeComponent,
+    DashboardComponent,
     LoginComponent,
     LayoutComponent,
     HomeComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AccountRoutingModule,
     NgbModule,
     PartialsModule,
     ReactiveFormsModule,
+	  FormsModule,
     RouterModule,
     HttpClientModule,
     SharedModule,

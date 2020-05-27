@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, RouterModule,  ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AccountService } from './../services/account.services';
 import { AlertService } from './../services/alert.services';
-import { registerLocaleData } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-register',
@@ -13,7 +13,7 @@ import { registerLocaleData } from '@angular/common';
     styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-    form: FormGroup;
+    registerForm: FormGroup;
     loading = false;
     submitted = false;
 
@@ -21,8 +21,10 @@ export class RegisterComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
+        private routerModule: RouterModule,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private http: HttpClient
     ) {
         // redirecct to home if already logged in
         if (this.accountService.userValue) {
@@ -31,16 +33,17 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.form = this.formBuilder.group({
+        this.registerForm = this.formBuilder.group({
             firstname: ['', Validators.required],
             lastname: ['', Validators.required],
             username: ['', Validators.required],
             email:  ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            confirm_password: ['', [Validators.required]]
         });
     }
     // convenience getter for easy access to form fields
-    get f() { return this.form.controls;}
+    get f() { return this.registerForm.controls;}
 
     onSubmit() {
         this.submitted = true;
@@ -49,12 +52,18 @@ export class RegisterComponent implements OnInit {
         this.alertService.clear();
 
         //stop here if form is invalid
-        if (this.form.invalid) {
+        if (this.registerForm.invalid) {
             return;
+        }
+        if(this.registerForm.valid){
+            this.http.post('api/register', this.registerForm.value)
+            .subscribe((response)=>{
+                console.log('response', response)
+            })
         }
 
         this.loading = true;
-        this.accountService.register(this.form.value)
+        this.accountService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
                 data => {

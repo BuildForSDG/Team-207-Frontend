@@ -11,7 +11,7 @@
                     </p>
                     <div class="row">
                         <div class="col-md-6">
-                           <a href="register.component.html">
+                           <a routerLink="register">
 						   <button class="btn btn-primary btn-block rounded-pill">
                                 Create Account
                             </button>
@@ -30,7 +30,7 @@
         <div class="text-uppercase-expanded text-center mb-5 text-black-300">Our Services</div>
         <div class="row mb-5 text-center">
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <app-home-service-item 
+                <app-home-service-item
                     bg="bg-danger"
                     icon="las la-money-bill-wave"
                     title="Send Money"
@@ -39,7 +39,7 @@
                 </app-home-service-item>
             </div>
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <app-home-service-item 
+                <app-home-service-item
                     bg="bg-warning"
                     icon="las la-wallet"
                     title="Receive Funds"
@@ -48,7 +48,7 @@
                 </app-home-service-item>
             </div>
             <div class="col-lg-4">
-                <app-home-service-item 
+                <app-home-service-item
                     bg="bg-info"
                     icon="las la-file-invoice-dollar"
                     title="Pay Bills"
@@ -59,7 +59,7 @@
         </div>
         <div class="row text-center">
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <app-home-service-item 
+                <app-home-service-item
                     bg="bg-teal"
                     icon="las la-car-side"
                     title="Car Insurance"
@@ -68,7 +68,7 @@
                 </app-home-service-item>
             </div>
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <app-home-service-item 
+                <app-home-service-item
                     icon="las la-plane-departure"
                     title="Travel Insurance"
                     description="We provide you with the perfect travel insurance for all your international air travels"
@@ -76,7 +76,7 @@
                 </app-home-service-item>
             </div>
             <div class="col-lg-4">
-                <app-home-service-item 
+                <app-home-service-item
                     bg="bg-dark"
                     icon="las la-home"
                     title="House Insurance"
@@ -165,3 +165,4 @@
     </div>
     <app-bottom-curve></app-bottom-curve>
 </section>
+<router-outlet></router-outlet>

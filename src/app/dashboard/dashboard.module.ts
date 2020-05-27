@@ -4,23 +4,23 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { LuiRoutingModule } from './lui-routing.module';
-import { LuiLayoutComponent } from './luilayout.component';
-import { LuiHomeComponent } from './luihome.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardLayoutComponent } from './dashboardlayout.component';
+import { DashboardComponent } from './dashboard.component';
 //import { RegisterComponent } from './register.component';
 
 @NgModule({
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        LuiRoutingModule,
+        DashboardRoutingModule,
         RouterModule,
         RouterTestingModule
     ],
     declarations: [
-        LuiLayoutComponent,
-        LuiHomeComponent
+        DashboardLayoutComponent,
+        DashboardComponent
       // RegisterComponent
     ]
 })
-export class LuiModule { }
+export class DashboardModule { }

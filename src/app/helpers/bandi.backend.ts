@@ -82,7 +82,7 @@ export class bandiBackendInterceptor implements HttpInterceptor {
         function updateUser() {
             if (!isLoggedIn()) return unauthorized();
 
-            let params = body;
+            let params = body;           
             let user = users.find(x => x.id === idFromUrl());
 
             // only update password if entered

@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private routerModule: RouterModule,
+        private reactiveFormsModule: ReactiveFormsModule,
         private accountService: AccountService,
         private alertService: AlertService
     ) { }

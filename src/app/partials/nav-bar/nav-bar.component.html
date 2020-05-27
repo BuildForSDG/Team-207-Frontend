@@ -1,6 +1,6 @@
 <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
     <div class="container">
-        <a class="navbar-brand text-primary" href="home.component.html">{{ constants.appName }}</a>
+        <a class="navbar-brand text-primary" routerLink="home">{{ constants.appName }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
         (click)="isNavbarCollapsed = !isNavbarCollapsed"
         >
@@ -15,18 +15,12 @@
                 <li class="nav-item"><a class="nav-link">Contact </a></li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" routerLink="login">Login </a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active">Login </a></li>
             </ul>
-            <a class="btn-teal btn rounded-pill px-4 ml-lg-4" routerLink="register">Register
+            <a class="btn-teal btn rounded-pill px-4 ml-lg-4" routerLink="/register" routerLinkActive="active">Register
                 <i class="fas fa-arrow-right ml-1"></i>
             </a>
         </div>
     </div>
 </nav>
-
- <!-- <div id="layoutDefault_content">
-    <main>
-      <app-nav-bar></app-nav-bar>
-      <router-outlet></router-outlet>
-    </main>
-</div> -->
+<router-outlet></router-outlet>
