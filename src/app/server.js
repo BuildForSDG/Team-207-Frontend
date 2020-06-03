@@ -4,10 +4,10 @@ const app = express()
 //const mysql = require('mysql')
 //require('./passportConfig')
 //const passport = require('passport')
-//const path = require('path');
+const path = require('path');
 //const session = require('express-session')
 
-dotenv.config();
+//dotenv.config();
 
 //connect to mysql
 //mysql.set('useFindAndModify', false);
