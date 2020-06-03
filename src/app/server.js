@@ -1,13 +1,42 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
-
 const app = express()
-const cors = require('cors')
-const session = require('express-session')
+//const mysql = require('mysql')
+//require('./passportConfig')
+//const passport = require('passport')
+//const path = require('path');
+//const session = require('express-session')
 
-app.use(bodyParser.urlencoded({extended: true }))
+dotenv.config();
+
+//connect to mysql
+//mysql.set('useFindAndModify', false);
+//mysql.set('useUnifiedTopology', true);
+//mysql.connect(process.env.DB_CONNECT,{useNewUrlParser: true} , () => console.log('connected to db!'));
+
+app.use(express.static(path.join(__dirname, '/dist/src')));
+
+//middleware
+app.use(bodyParser.urlencoded({extended: false }))
+//app.use(cors())
+//app.use(passport.initialize())
 app.use(bodyParser.json())
+
+//import routes
+const RegisterController = require('./app/auth/RegisterController');
+app.use('/register', register);
+
+//error handler
+// app.use((err, req, res, next) => {
+//     if(err.name =='ValidationError')
+//     {
+//         const valErrs = [];
+//         Object.keys(err.errors).forEach(key => valErrs.push(err.errors[key].message));
+
+//         res.status(422).send(valErrs);
+//         next()
+//     }
+// })
 
 app.use(function(req, res, next) {
 
@@ -18,7 +47,11 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use('/api', require('./auth.controller'));
+app.get('/*', function (req, res, next)  {
+    res.sendFile(path.join(__dirname + '/dist/src/index.html'));
+});
+
+// app.use('/api', require('./auth.controller'));
 //app.use('/api/login', require('./controller/auth.controller'));
 
 const server = app.listen(4200,'localhost', function () {

@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
+
 import { AccountService } from 'src/app/services/account.services';
 import { AlertService } from 'src/app/services/alert.services';
 
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
         private routerModule: RouterModule,
         private reactiveFormsModule: ReactiveFormsModule,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+       // private userService: UserService
     ) { }
 
     ngOnInit() {

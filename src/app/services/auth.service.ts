@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import {catchError, map } from 'rxjs/operators';
 
-import { User } from './models/user';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ currentUser = {};
   constructor(private httpClient: HttpClient, public router: Router) { }
 
 	register(user: User): Observable<any> {
-	  return this.httpClient.post(`${this.API_URL}/api/register`, user).pipe(
+	  return this.httpClient.post(`${this.API_URL}/api/users/register`, user).pipe(
 	  catchError(this.handleError)
 	)
 }

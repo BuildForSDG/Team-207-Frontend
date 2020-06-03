@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+//import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
 
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/user';
@@ -11,6 +13,9 @@ import { User } from 'src/app/models/user';
 export class AccountService {
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
+
+    headers = new HttpHeaders().set('Content-Type', 'application/json');
+    currentUser = {};
 
     constructor(
         private router: Router,
@@ -79,4 +84,24 @@ export class AccountService {
                 return x;
             }));
     }
+    getUserProfile(id: string) {
+		return this.http.get<User>(`${environment.apiUrl}/users/profile/${id}`)
+	//  	map((res: Response) => {
+	//  		return res || {}
+	//  	}),
+	//  	catchError(this.handleError)
+	//    )
+	}
+
+	handleError(error: HttpErrorResponse) {
+		let msg = '';
+		if (error.error instanceof ErrorEvent) {
+			// client-error
+			msg = error.error.message;
+		} else {
+			// server-side error
+			msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+		}
+		return throwError(msg);
+	  }
 }
