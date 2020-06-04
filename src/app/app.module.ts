@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StorageServiceModule } from 'ngx-webstorage-service';
+//import { StorageServiceModule } from 'ngx-webstorage-service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -46,7 +46,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RouterModule,
     HttpClientModule,
     SharedModule,
-    StorageServiceModule,
+    //StorageServiceModule,
   ],
   providers: [
     Constants, Utils,
