@@ -8,7 +8,7 @@ const http = require('http')
 const path = require('path');
 //const session = require('express-session')
 
-const PORT = process.env.PORT || 53422;
+const PORT = process.env.PORT || 4200;
 
 const users = [];
 
@@ -55,11 +55,11 @@ app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
 
 const server = http.createServer(app);
 
-//app.listen(PORT, () => { console.log(`App runs on port ${ port }`);
-//});
-
-const server = app.listen(53422,'localhost', function () {
-    {
-        console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
-    }
+app.listen(PORT, () => { console.log(`App runs on port ${ port }`);
 });
+
+//const server = app.listen(53422,'localhost', function () {
+//    {
+//        console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
+//    }
+//});
