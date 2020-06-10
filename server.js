@@ -23,8 +23,9 @@ app.use(bodyParser.json());
 
 //app.use(express.static(path.join(__dirname, './dist')));
 
-app.use(express.static(__dirname + '/dist/banking-insurance'))
+app.use(express.static(__dirname + '/dist/src'))
 
+//app.use(express.static(${__dirname}/front-end/dist/))
 //middleware
 app.use(bodyParser.urlencoded({extended: false }))
 //app.use(cors())
@@ -51,7 +52,9 @@ app.get('/api/users', (req, res) => { res.json(users); });
 
 app.post('/api/user', (req, res) => { const user = req.body.user; users.push(user); res.json("user added"); });
 
-app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
+//app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
+
+app.get('*', (req, res) => res.sendFile(path.join(__dirname/dist/src/index.html)));
 
 const server = http.createServer(app);
 
