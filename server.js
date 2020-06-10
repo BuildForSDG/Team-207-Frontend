@@ -55,7 +55,7 @@ app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
 
 const server = http.createServer(app);
 
-server.listen(PORT, function () { console.log("App runs on port "+ port );
+app.listen(PORT, function () { console.log("App runs on port "+ port );
 });
 
 //const server = app.listen(53422,'localhost', function () {
