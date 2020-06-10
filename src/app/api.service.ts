@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { HttpClientJsonpModule } from '@angular/common/http';
-import { Policy } from './policy';
+//import { HttpClientJsonpModule } from '@angular/common/http';
+//import { Policy } from './policy';
 import { Observable } from 'rxjs';
-import { User } from './models/user';
+//import { User } from './models/user';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'applocation/json'})
 };
-const apiUrl = 'http://localhost:8001';
+const apiUrl = 'http://localhost:8000';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  postUserUrl = 'http://localhost:8001/api/users/register';
+  postUserUrl = 'http://localhost:8001/api/register';
 //PHP_API_SERVER = "http://127.0.0.1:8001";
 
   constructor(private httpClient: HttpClient) { }
