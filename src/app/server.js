@@ -32,7 +32,7 @@ const app = express()
 const database = require('./db')
 const routes = require('./routes/api')
 
-const users = [];
+const user = [];
 
 //dotenv.config();
 
