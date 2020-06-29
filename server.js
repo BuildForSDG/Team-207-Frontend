@@ -10,7 +10,7 @@ const path = require('path');
 
 const PORT = process.env.PORT || 4200;
 
-const users = [];
+const user = [];
 
 app.use(bodyParser.json());
 
@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
 //app.get('/*', function (req, res, next)  {
 //    res.sendFile(path.join(__dirname + '/src/index.html'));
 //});
-app.get('/api/users', (req, res) => { res.json(users); });
+app.get('/api/user', (req, res) => { res.json(user); });
 
 app.post('/api/user', (req, res) => { const user = req.body.user; users.push(user); res.json("user added"); });
 
