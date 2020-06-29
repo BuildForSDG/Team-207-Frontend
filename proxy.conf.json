@@ -2,6 +2,7 @@
 	"/api": {
 	"target": "https://shielded-badlands-35399.herokuapp.com/",
 	"secure": false,
+	"changeOrigin": true,
 	"pathRewrite": {
 		"^/api": ""
 	},
