@@ -8,7 +8,7 @@ const http = require('http')
 const path = require('path');
 //const session = require('express-session')
 //const forceSSL = require('forceSSL')
-const { createProxyMiddleware } = require('http-proxy-middleware')
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const options = {
     target: 'https://shielded-badlands-35399.herokuapp.com/',
