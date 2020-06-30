@@ -8,8 +8,27 @@ const http = require('http')
 const path = require('path');
 //const session = require('express-session')
 //const forceSSL = require('forceSSL')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 
-const PORT = process.env.PORT || 4200;
+const options = {
+    target: 'https://shielded-badlands-35399.herokuapp.com/',
+    changeOrigin: true,
+    ws: true,
+    pathRewrite: {
+        '^/api/old-path': '/api/new-path',
+        '^/api/remove/path': '/path',
+    },
+    router: {
+        'dev.localhost:4200': 'http://localhost:8000',
+    },
+};
+
+const backendProxy = createProxyMiddleware(options);
+app.use('/api', backendProxy)
+
+app.use('/api', createProxyMiddleware({ target: ''}))
+
+//const PORT = process.env.PORT || 4200;
 
 const user = [];
 
