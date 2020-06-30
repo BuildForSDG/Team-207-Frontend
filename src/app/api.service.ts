@@ -6,24 +6,25 @@ import { Observable } from 'rxjs';
 //import { User } from './models/user';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'applocation/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
-const apiUrl = 'http://localhost:8000';
+const apiUrl = this.http.get('/api/v1/user')
+              .map(res => res.json());
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  postUserUrl = 'http://localhost:8001/api/register';
+  postUserUrl = '"https://shielded-badlands-35399.herokuapp.com/';
 //PHP_API_SERVER = "http://127.0.0.1:8001";
 
   constructor(private httpClient: HttpClient) { }
 
-  postUser(firstname, lastname, username, email, password, confirm_password): Observable<any> {
+  postUser(first_name, last_name, username, email, password, confirm_password): Observable<any> {
     const uri = `${apiUrl + this.postUserUrl}`;
     const obj = {
-      firstname: firstname,
-      lastname: lastname,
+      first_name: first_name,
+      last_name: last_name,
       username: username,
       email: email,
       password: password,

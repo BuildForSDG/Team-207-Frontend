@@ -50,12 +50,12 @@ const routes: Routes = [
       },
    {
       path: '',
-      redirectTo: 'register',
+      redirectTo: 'home',
       pathMatch: 'full'
     },
     {
-      path: '',
-      redirectTo: 'login',
+      path: '**',
+      redirectTo: 'home',
       pathMatch: 'full'
     },
     //  {
