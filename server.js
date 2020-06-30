@@ -4,9 +4,10 @@ const app = express()
 const http = require('http')
 //const mysql = require('mysql')
 //require('./passportConfig')
-//const passport = require('passport')
+const passport = require('passport')
 const path = require('path');
-//const session = require('express-session')
+const session = require('express-session')
+const forceSSL = require('forceSSL')
 
 const PORT = process.env.PORT || 4200;
 
@@ -53,6 +54,16 @@ app.get('/api/user', (req, res) => { res.json(user); });
 app.post('/api/user', (req, res) => { const user = req.body.user; users.push(user); res.json("user added"); });
 
 //app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
+
+const forceSSL = function () {
+    return function (req, res, next) {
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+            return res.redirect(['https://', req.get('Host'), req.url].joiin(''));
+        }
+        next();
+    }
+}
+app.use(forceSSL())
 
 app.get('*', (req, res) => res.sendFile(path.join(__dirname/dist/src/index.html)));
 

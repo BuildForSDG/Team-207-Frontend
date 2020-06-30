@@ -1,10 +1,10 @@
 {
 	"/api": {
-	"target": "https://shielded-badlands-35399.herokuapp.com/",
+	"target": "https://shielded-badlands-35399.herokuapp.com/api",
 	"secure": false,
 	"changeOrigin": true,
 	"pathRewrite": {
-		"^/api": ""
+		"^/api": "https://shielded-badlands-35399.herokuapp.com/api"
 	},
 
 	"logLevel": "debug"
