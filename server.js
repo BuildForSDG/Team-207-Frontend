@@ -4,7 +4,7 @@ const app = express()
 const http = require('http')
 //const mysql = require('mysql')
 //require('./passportConfig')
-const passport = require('passport')
+//const passport = require('passport')
 const path = require('path');
 const session = require('express-session')
 //const forceSSL = require('forceSSL')
