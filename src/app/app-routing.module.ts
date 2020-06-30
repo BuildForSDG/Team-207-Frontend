@@ -16,31 +16,15 @@ import { UserProfileComponent }  from './user-profile/user-profile.component';
 
 
 const routes: Routes = [
-
-//  {path: '', component: HomeComponent, canActivate: [AuthGuard] },
-//  {path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
-//  {path: 'account', loadChildren: accountModule},
-
-  //otherwise redirect to home
- // { path: '**', redirectTo: '' }
-  //  {
-  //    path: 'home',
-  //    component: HomeComponent
-  //   //  canActivate: [AuthGuard]
-  //  },
-
   {
     path: 'home',
     component: HomeComponent
   },
-    // {
-    //     path: 'register',
-    //    component: RegisterComponent
-    // },
-    // {
-    //  path: 'login',
-    // component: LoginComponent
-    // },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
      {
        path: 'account', component: LayoutComponent,
         children: [
@@ -48,23 +32,16 @@ const routes: Routes = [
           { path: 'register', component: RegisterComponent }
         ]
       },
-   {
+    {
       path: '',
-      redirectTo: 'home',
+      redirectTo: 'register',
       pathMatch: 'full'
     },
     {
-      path: '**',
-      redirectTo: 'home',
+      path: '',
+      redirectTo: 'login',
       pathMatch: 'full'
     },
-    //  {
-    //   path: 'account', component: LayoutComponent,
-    //    children: [
-    //       { path: 'login', component: LoginComponent },
-    //       { path: 'register', component: RegisterComponent }
-    //    ]
-    //  },
      {
 	     path: '', component: DashboardLayoutComponent,
 	      children: [
@@ -72,16 +49,7 @@ const routes: Routes = [
       ]
      },
    {	path: 'profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] }
-  //   {
-  //      path: '**',
-  //      redirectTo: '/home',
-  //      pathMatch: 'full'
-  //  }
-  // {
-  //   path: '',
-  //   redirectTo: '/home',
-  //   pathMatch: 'full'
-  // }
+
 ];
 
 @NgModule({
