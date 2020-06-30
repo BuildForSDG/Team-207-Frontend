@@ -7,7 +7,7 @@ const http = require('http')
 const passport = require('passport')
 const path = require('path');
 const session = require('express-session')
-const forceSSL = require('forceSSL')
+//const forceSSL = require('forceSSL')
 
 const PORT = process.env.PORT || 4200;
 
