@@ -8,24 +8,24 @@ const http = require('http')
 const path = require('path');
 //const session = require('express-session')
 //const forceSSL = require('forceSSL')
-const { createProxyMiddleware } = require('http-proxy-middleware');
+// const { createProxyMiddleware } = require('http-proxy-middleware');
 
-const options = {
-    target: 'https://shielded-badlands-35399.herokuapp.com/',
-    changeOrigin: true,
-    ws: true,
-    pathRewrite: {
-        '^/api/users': '/api/user/register',
-        '^/api/remove/users': '/users',
-    },
-    router: {
-        'dev.localhost:4200': 'http://localhost:8000',
-    },
-};
+// const options = {
+//     target: 'https://shielded-badlands-35399.herokuapp.com/',
+//     changeOrigin: true,
+//     ws: true,
+//     pathRewrite: {
+//         '^/api/users': '/api/user/register',
+//         '^/api/remove/users': '/users',
+//     },
+//     router: {
+//         'dev.localhost:4200': 'http://localhost:8000',
+//     },
+// };
 
-const backendProxy = createProxyMiddleware(options);
+// const backendProxy = createProxyMiddleware(options);
 
-app.use('/api', backendProxy)
+// app.use('/api', backendProxy)
 
 //app.use('/api', createProxyMiddleware({ target: ''}))
 
