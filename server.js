@@ -15,8 +15,8 @@ const options = {
     changeOrigin: true,
     ws: true,
     pathRewrite: {
-        '^/api/old-path': '/api/new-path',
-        '^/api/remove/path': '/path',
+        '^/api/users': '/api/user/register',
+        '^/api/remove/users': '/users',
     },
     router: {
         'dev.localhost:4200': 'http://localhost:8000',
