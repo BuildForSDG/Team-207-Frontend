@@ -24,11 +24,12 @@ const options = {
 };
 
 const backendProxy = createProxyMiddleware(options);
+
 app.use('/api', backendProxy)
 
-app.use('/api', createProxyMiddleware({ target: ''}))
+//app.use('/api', createProxyMiddleware({ target: ''}))
 
-//const PORT = process.env.PORT || 4200;
+const PORT = process.env.PORT || 4200;
 
 const user = [];
 
