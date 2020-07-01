@@ -4,7 +4,7 @@
 	"secure": false,
 	"changeOrigin": true,
 	"pathRewrite": {
-		"^/api": "https://shielded-badlands-35399.herokuapp.com/api"
+		"^/api": ""
 	},
 
 	"logLevel": "debug"
