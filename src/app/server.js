@@ -3,12 +3,15 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
 const http = require('http')
-//require('./passportConfig')
+require('./passportConfig')
 const mysql = require('mysql')
 const passport = require('passport')
 const path = require('path');
 const session = require('express-session')
-//const events = require('./events')
+const dotenv = require('dotenv')
+
+dotenv.config();
+
 
 //connect to mysql
 const connection = mysql.createConnection ({
@@ -28,11 +31,9 @@ const app = express()
     .use(bodyParser.json())
 
 const database = require('./db')
-const routes = require('./routes/api')
+const authRouter = require('./auth')
 
 const user = [];
-
-//dotenv.config();
 
 //mysql.set('useFindAndModify', false);
 //mysql.set('useUnifiedTopology', true);
@@ -43,11 +44,12 @@ const user = [];
 app.use(express.static(__dirname + '/dist/banking-insurance'))
 
 //middleware
-app.use(bodyParser.urlencoded({extended: false }))
+//app.use(bodyParser.urlencoded({extended: false }))
 //app.use(cors())
-//app.use(passport.initialize())
+app.use(passport.initialize())
 app.use(bodyParser.json())
 
+app.use('\api', authRouter)
 //import routes
 //const RegisterController = require('./app/auth/RegisterController');
 //app.use('/register', register);
