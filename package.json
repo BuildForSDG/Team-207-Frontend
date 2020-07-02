@@ -16,7 +16,7 @@
     "server": "webpack-dashboard-- webpack-dev-server --inline --port 4000",
     "webdriver-update": "webdriver-manager update",
      "ng": "ng",
-    "start": "node server.js",
+    "start": "node server.js --proxy-config proxy.conf.json",
     "heroku-postbuild": "ng build --prod"
   },
   "author": {
