@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
             return;
         }
         if(this.registerForm.valid){
-            this.http.post('api/user/register', this.registerForm.value)
+            this.http.post('/api/user/register', this.registerForm.value)
             .subscribe((response)=>{
                 console.log('response', response)
             })

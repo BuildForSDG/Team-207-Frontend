@@ -26,17 +26,6 @@ const PORT = process.env.PORT || 4200;
 const app = express()
     .use(cors())
     .use(bodyParser.json())
-   // .user(connection));
-const forceSSL = function () {
-    return function (req, res, next) {
-        if (req.headers['x-forwarded-proto'] !== 'https') {
-            return res.redirect(
-                ['https://', req.get('Host'), req.url].('')
-            )
-        }
-        next()
-     }
-}app.use(forceSSL())
 
 const database = require('./db')
 const routes = require('./routes/api')
@@ -105,6 +94,18 @@ app.delete('/api/user/:id', function(req, res) {
 //app.post('/api/users', (req, res) => { res.json(users); });
 
 //app.post('/api/user', (req, res) => { const user = req.body.user; users.push(user); res.json("user added"); });
+
+const forceSSL = function () {
+    return function (req, res, next) {
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+            return res.redirect(
+                ['https://', req.get('Host'), req.url].join('')
+            );
+        }
+        next();
+     }
+}
+app.use(forceSSL());
 
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
 
