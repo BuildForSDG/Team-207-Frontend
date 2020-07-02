@@ -1,12 +1,12 @@
-```const router = require('express').Router();
+const router = require('express').Router();
 const User = require('./models/User');
-const ctrlUser require('../controller/user.controller');
+const ctrlUser = require('../controller/user.controller');
 const jwthelper = require('../jwtHelper')
 
 //validation
 
-router.post('/register'. ctrlUser.register);
+router.post('/register', ctrlUser.register);
 route.post('authenticate', ctrlUser.authenticate);
-router.get('/userProfile' jwthelper.verifyJwtToken, ctrlUser.userProfile);
+router.get('/userProfile', jwthelper.verifyJwtToken, ctrlUser.userProfile);
 
-module.exports = router;````
+module.exports = router;
