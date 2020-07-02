@@ -19,7 +19,7 @@ const connection = mysql.createConnection ({
     password : '0f065a41'
 })
 
-connecion.connect();
+connection.connect();
 
 const PORT = process.env.PORT || 4200;
 
@@ -27,7 +27,16 @@ const app = express()
     .use(cors())
     .use(bodyParser.json())
    // .user(connection));
-
+const forceSSL = function () {
+    return function (req, res, next) {
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+            return res.redirect(
+                ['https://', req.get('Host'), req.url].('')
+            )
+        }
+        next()
+     }
+}app.use(forceSSL())
 
 const database = require('./db')
 const routes = require('./routes/api')
