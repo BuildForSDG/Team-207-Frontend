@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from'./user.model';
+import { User } from '.././models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { from } from 'rxjs';
@@ -9,23 +9,25 @@ import { from } from 'rxjs';
 })
 export class UserService {
 	selectedUser: User = {
+		id:'',
 		first_name: '',
 		last_name: '',
-		userbane: '',
-		enail: '',
-		password: ''
+		username: '',
+		email: '',
+		password: '',
+		token: ''
 	};
 
-  constructor(privaye http: HttpClient) { }
-  
+  constructor(private http: HttpClient) { }
+
   postUser(user:User) {
-	  return this.http.post(environment.apiBaseUrl+ '/register' ,user)
+	  return this.http.post(environment.apiUrl+ '/register' ,user)
   }
-  
+
   login(authCredentials) {
-	  return this.http.post(environment.apiBaseUrl+ '/authenticate' ,authCredentials)
+	  return this.http.post(environment.apiUrl+ '/authenticate' ,authCredentials)
   }
-  
+
   setToken(token:string) {
 	  localStorage.setItem('token', token)
   }
