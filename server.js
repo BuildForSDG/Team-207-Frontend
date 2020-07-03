@@ -3,7 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 //const app = express()
 const http = require('http')
-require('./passportConfig')
+//require('./passportConfig')
 const mysql = require('mysql')
 const passport = require('passport')
 const path = require('path');
