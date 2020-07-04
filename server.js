@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-//const app = express()
 const http = require('http')
 //require('./passportConfig')
 const mysql = require('mysql')
@@ -30,7 +29,7 @@ const app = express()
     .use(cors())
     .use(bodyParser.json())
 
-const database = require('./db')
+//const database = require('./db')
 const authRouter = require('./auth')
 
 const user = [];
