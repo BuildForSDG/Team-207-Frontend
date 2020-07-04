@@ -30,7 +30,7 @@ const app = express()
     .use(bodyParser.json())
 
 //const database = require('./db')
-const authRouter = require('./auth')
+const authRouter = require('./src/app/auth')
 
 const user = [];
 
