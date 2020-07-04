@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const User = require('./models/User');
-const ctrlUser = require('../controller/user.controller');
-const jwthelper = require('../jwtHelper')
+const User = require('./models/user');
+const ctrlUser = require('./user.controller');
+const jwthelper = require('./helpers')
 
 //validation
 
