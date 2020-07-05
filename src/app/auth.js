@@ -4,7 +4,6 @@ const ctrlUser = require('./user.controller');
 const jwthelper = require('./helpers')
 
 
-
 //validation
 
 router.post('/register', ctrlUser.register);
