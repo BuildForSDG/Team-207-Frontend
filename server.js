@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const http = require('http')
-//require('./passportConfig')
+//require('./passportConfig')sssssssssss
 const mysql = require('mysql')
 const passport = require('passport')
 const path = require('path');
@@ -28,7 +28,6 @@ const PORT = process.env.PORT || 4200;
 const app = express()
     .use(cors())
     .use(bodyParser.json())
-
 //const database = require('./db')
 const authRouter = require('./src/app/auth')
 
