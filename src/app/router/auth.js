@@ -1,5 +1,5 @@
 const router = require('express').Router()
-var User = require('../models/User')
+const User = require('../models/user')
 const ctrlUser = require('./user.controller')
 const jwthelper = require('./helpers')
 
