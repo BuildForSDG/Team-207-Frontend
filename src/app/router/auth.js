@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const User = require('../../../src/app/models/user')
+const User = require('../models/user')
 const ctrlUser = require('./user.controller')
 const jwthelper = require('./helpers')
 
