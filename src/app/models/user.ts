@@ -7,3 +7,4 @@ export class User {
     password: string;
     token: string;
 }
+module.exports = User;
