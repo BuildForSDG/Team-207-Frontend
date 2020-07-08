@@ -1,4 +1,4 @@
-class User {
+export class User {
     id: string;
     first_name: string;
     last_name: string;
@@ -7,4 +7,3 @@ class User {
     password: string;
     token: string;
 }
-module.exports = User;
