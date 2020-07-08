@@ -7,7 +7,7 @@
   },
   "description": "banking app",
   "main": "index.js",
-   "scripts": {
+  "scripts": {
     "ng": "ng",
     "start": "node server.js --proxy-config --proxy.conf.json",
     "heroku-postbuild": "ng build --prod"
@@ -31,10 +31,10 @@
     "express": "^4.17.1",
     "i": "^0.3.6",
     "ngx-webstorage-service": "^4.1.0",
-	"@angular/animations": "~9.1.9",
+    "@angular/animations": "~9.1.9",
     "@angular/common": "~9.1.9",
-	"@angular/cli": "~9.1.7",
-	"@angular/compiler-cli": "~9.1.9",
+    "@angular/cli": "~9.1.7",
+    "@angular/compiler-cli": "~9.1.9",
     "@angular/compiler": "~9.1.9",
     "@angular/core": "~9.1.9",
     "@angular/forms": "~9.1.9",
@@ -54,7 +54,7 @@
     "@babel/preset-env": "^7.9.5",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.12.48",
     "babel-jest": "^25.4.0",
     "codelyzer": "^5.1.2",
     "eslint": "^6.8.0",
