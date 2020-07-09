@@ -13,6 +13,7 @@
     "test": "__tests__"
   },
   "scripts": {
+    "build": "babel server.js -d dist",
     "server": "webpack-dashboard-- webpack-dev-server --inline --port 4000",
     "webdriver-update": "webdriver-manager update",
     "ng": "ng",
