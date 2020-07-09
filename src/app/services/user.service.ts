@@ -8,20 +8,20 @@ import { from } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-	selectedUser: User = {
-		id:'',
-		first_name: '',
-		last_name: '',
-		username: '',
-		email: '',
-		password: '',
-		token: ''
-	};
+// selectedUser: User = {
+// 		id: '',
+// 		first_name: '',
+// 		last_name: '',
+// 		username: '',
+// 		email: '',
+// 		password: '',
+// 		token: ''
+// 	};
 
   constructor(private http: HttpClient) { }
 
-  postUser(user:User) {
-	  return this.http.post(environment.apiUrl+ '/register' ,user)
+  register(user:User) {
+	  return this.http.post(environment.apiUrl+ 'users/register' ,user)
   }
 
   login(authCredentials) {
