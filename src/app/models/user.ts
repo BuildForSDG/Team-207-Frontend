@@ -1,5 +1,5 @@
 class User {
-    id: string;
+    id: BigInt;
     first_name: string;
     last_name: string;
     username: string;

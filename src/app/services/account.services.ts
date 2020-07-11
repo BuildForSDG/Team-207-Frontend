@@ -54,7 +54,7 @@ export class AccountService {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
 
-    getById(id: string) {
+    getById(id: BigInt) {
         return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
     }
 
@@ -74,7 +74,7 @@ export class AccountService {
             }));
     }
 
-    delete(id: string) {
+    delete(id: BigInt) {
         return this.http.delete(`${environment.apiUrl}/users/${id}`)
             .pipe(map(x => {
                 // auto logout if the logged in user deleted their own record
@@ -84,7 +84,7 @@ export class AccountService {
                 return x;
             }));
     }
-    getUserProfile(id: string) {
+    getUserProfile(id: BigInt) {
 		return this.http.get<User>(`${environment.apiUrl}/users/profile/${id}`)
 	//  	map((res: Response) => {
 	//  		return res || {}
