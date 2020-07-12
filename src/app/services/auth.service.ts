@@ -30,7 +30,7 @@ currentUser = {};
 			 localStorage.setItem('access_token', res.token)
 			 this.getUserProfile(res._id).subscribe((res) => {
 				 this.currentUser = res;
-				 this.router.navigate(['users/profile/' + res.msg._id]);
+				 this.router.navigate(['user-profile/profile/' + res.msg._id]);
 			 })
 		 })
 	}
@@ -46,11 +46,11 @@ currentUser = {};
 
 	logout() {
 		if (localStorage.removeItem('access_token') == null) {
-			this.router.navigate(['users/login']);
+			this.router.navigate(['account/login']);
 		}
 	}
 
-	getUserProfile(id): Observable<any> {
+	getUserProfile(id: string): Observable<any> {
 		return this.httpClient.get(`${this.API_URL}/users/profile/${id}`, {headers: this.headers }).pipe(
 		map((res: Response) => {
 			return res || {}

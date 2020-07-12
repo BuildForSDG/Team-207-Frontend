@@ -7,4 +7,4 @@ class User {
     password: string;
     token: string;
 }
-export { User }
+export { User };
