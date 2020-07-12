@@ -84,7 +84,7 @@ export class AccountService {
                 return x;
             }));
     }
-    getUserProfile(id: number) {
+    getUserProfile(id: string) {
 		return this.http.get<User>(`${environment.apiUrl}/users/profile/${id}`)
 	//  	map((res: Response) => {
 	//  		return res || {}
