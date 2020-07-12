@@ -1,10 +1,12 @@
 class User {
-    id: string;
-    first_name: string;
-    last_name: string;
-    username: string;
-    email: string;
-    password: string;
-    token: string;
+    constructor (
+    public id: string,
+    public first_name: string,
+    public last_name: string,
+    public username: string,
+    public email: string,
+    public password: string,
+    public token: string
+    ) { }
 }
-export { User };
+export { User }
