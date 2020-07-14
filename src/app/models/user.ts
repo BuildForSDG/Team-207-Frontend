@@ -1,12 +1,12 @@
 class User {
 
-    private id: string;
-    private first_name: string;
-    private last_name: string;
-    private username: string;
-    private email: string;
-    private password: string;
-    private token: string;
+    public id: string;
+    public first_name: string;
+    public last_name: string;
+    public username: string;
+    public email: string;
+    public password: string;
+    public token: string;
 
     constructor(id: string, first_name: string, last_name: string, username: string, email: string, password: string, token: string) {
         this.id = id;
