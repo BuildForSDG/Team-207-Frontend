@@ -1,11 +1,11 @@
 class User {
-    "id": string;
-    "first_name": string;
-    "last_name": string;
-    "username": string;
-    "email": string;
-    "password": string;
-    "token": string;
+    id: string;
+    first_name: string;
+    last_name: string;
+    username: string;
+    email: string;
+    password: string;
+    token: string;
     // constructor(id: string, first_name: string, last_name: string, username: string, email: string, password: string, token:string) {
     //     this.id = id;
     //     this.first_name = first_name;
