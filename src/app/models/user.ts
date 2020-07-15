@@ -1,4 +1,4 @@
-export class User {
+class User {
     "id": string;
     "first_name": string;
     "last_name": string;
@@ -16,4 +16,4 @@ export class User {
     //     this.token = token;
     // }
 }
-//export { User }
+export { User }
