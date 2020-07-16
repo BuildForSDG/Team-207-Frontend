@@ -1,6 +1,6 @@
 class User {
 
-    user_id:string;
+    userId:string;
     first_name:string;
     last_name:string;
     username:string;
@@ -8,8 +8,8 @@ class User {
     password:string;
     token:string;
 
-    constructor(user_id:string, first_name:string, last_name:string, username:string, email:string, password:string, token:string) {
-        this.user_id = user_id;
+    constructor(userId:string, first_name:string, last_name:string, username:string, email:string, password:string, token:string) {
+        this.userId = userId;
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;

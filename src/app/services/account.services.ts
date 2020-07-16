@@ -54,15 +54,15 @@ export class AccountService {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
 
-    getById(user_id: string) {
-        return this.http.get<User>(`${environment.apiUrl}/users/${user_id}`);
+    getById(userId: string) {
+        return this.http.get<User>(`${environment.apiUrl}/users/${userId}`);
     }
 
-    update(user_id, params) {
-        return this.http.put(`${environment.apiUrl}/users/${user_id}`, params)
+    update(userId, params) {
+        return this.http.put(`${environment.apiUrl}/users/${userId}`, params)
             .pipe(map(x => {
                 // update stored user if the logged in user updated their own record
-                if (user_id == this.userValue.user_id) {
+                if (userId == this.userValue.userId) {
                     // update local storage
                     const user = { ...this.userValue, ...params };
                     localStorage.setItem('user', JSON.stringify(user));
@@ -74,18 +74,18 @@ export class AccountService {
             }));
     }
 
-    delete(user_id: string) {
-        return this.http.delete(`${environment.apiUrl}/users/${user_id}`)
+    delete(userId: string) {
+        return this.http.delete(`${environment.apiUrl}/users/${userId}`)
             .pipe(map(x => {
                 // auto logout if the logged in user deleted their own record
-                if (user_id == this.userValue.user_id) {
+                if (userId == this.userValue.userId) {
                     this.logout();
                 }
                 return x;
             }));
     }
-    getUserProfile(user_id: string) {
-		return this.http.get<User>(`${environment.apiUrl}/users/profile/${user_id}`)
+    getUserProfile(userId: string) {
+		return this.http.get<User>(`${environment.apiUrl}/users/profile/${userId}`)
 	//  	map((res: Response) => {
 	//  		return res || {}
 	//  	}),
