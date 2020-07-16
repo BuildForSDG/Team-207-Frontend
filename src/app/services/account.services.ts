@@ -93,15 +93,15 @@ export class AccountService {
 	//    )
 	}
 
-	handleError(error: HttpErrorResponse) {
-		let msg = '';
-		if (error.error instanceof ErrorEvent) {
-			// client-error
-			msg = error.error.message;
-		} else {
-			// server-side error
-			msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
-		}
-		return throwError(msg);
-	  }
+	// handleError(error: HttpErrorResponse) {
+	// 	let msg = '';
+	// 	if (error.error instanceof ErrorEvent) {
+	// 		// client-error
+	// 		msg = error.error.message;
+	// 	} else {
+	// 		// server-side error
+	// 		msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+	// 	}
+	// 	return throwError(msg);
+	//   }
 }
