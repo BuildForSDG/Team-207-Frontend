@@ -51,7 +51,7 @@ app.use(express.static(__dirname + '/dist/banking-insurance'))
 app.use(passport.initialize())
 app.use(bodyParser.json())
 
-app.use('\api', authRouter)
+//app.use('\api', authRouter)
 //import routes
 //const RegisterController = require('./app/auth/RegisterController');
 //app.use('/register', register);
