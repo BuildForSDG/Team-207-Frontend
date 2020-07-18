@@ -33,7 +33,7 @@ const app = express()
     .use(bodyParser.json())
 
 //const database = require('./db')
-// authRouter = require('./src/app/router/auth')
+authRouter = require('./src/app/router/auth')
 
 const user = [];
 
@@ -51,7 +51,7 @@ app.use(express.static(__dirname + '/dist/banking-insurance'))
 app.use(passport.initialize())
 app.use(bodyParser.json())
 
-//app.use('\api', authRouter)
+app.use('/api', authRouter)
 //import routes
 //const RegisterController = require('./app/auth/RegisterController');
 //app.use('/register', register);
