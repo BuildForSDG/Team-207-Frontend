@@ -17,4 +17,4 @@ class User {
         this.token = token;
     }
 }
-export { User }
+module.exports = User;//{ User }
