@@ -1,5 +1,5 @@
 class User {
-    userId:string;
+    _userId:string;
     first_name:string;
     last_name:string;
     username:string;
@@ -7,8 +7,8 @@ class User {
     password:string;
     token:string;
 
-    constructor(userId:string, first_name:string, last_name:string, username:string, email:string, password:string, token:string) {
-        this.userId = userId;
+    constructor(_userId:string, first_name:string, last_name:string, username:string, email:string, password:string, token:string) {
+        this._userId = _userId;
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
@@ -17,4 +17,4 @@ class User {
         this.token = token;
     }
 }
-module.exports = User;//{ User }
+export { User }
