@@ -1,16 +1,19 @@
-'use strict'
-
+const path = require('path');
 const express = require('express')
+const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
-//const app = express()
+const expressJwt = require('express-jwt')
 const http = require('http')
-//require('./passportConfig')
 const mysql = require('mysql')
 const passport = require('passport')
-const path = require('path');
 const session = require('express-session')
 const dotenv = require('dotenv')
+const environment = require('./src/environments/environment')
+
+//const app = express()
+app.use(cors())
+app.use(bodyParser.json())
 
 dotenv.config();
 
@@ -28,14 +31,10 @@ connection.connect();
 
 const PORT = process.env.PORT || 4200;
 
-const app = express()
-    .use(cors())
-    .use(bodyParser.json())
-
 //const database = require('./db')
-authRouter = require('./src/app/router/auth')
+//authRouter = require('./src/app/router/auth')
 
-const user = [];
+//const user = [];
 
 //mysql.set('useFindAndModify', false);
 //mysql.set('useUnifiedTopology', true);
@@ -49,12 +48,28 @@ app.use(express.static(__dirname + '/dist/banking-insurance'))
 //app.use(bodyParser.urlencoded({extended: false }))
 //app.use(cors())
 app.use(passport.initialize())
-app.use(bodyParser.json())
+//app.use(bodyParser.json())
 
-app.use('/api', authRouter)
+//app.use('/api', authRouter)
 //import routes
 //const RegisterController = require('./app/auth/RegisterController');
 //app.use('/register', register);
+
+// use JWT auth to secure the api, the token can be passed in the authorization header or querystring
+app.use(expressJwt({
+    secret: environment.secret,
+    getToken: function (req) {
+        if (req.headers.authorization && req.headers.authorization.split('')[0] === 'Bearer') {
+            return req.headers.authorization.split('')[1];
+        } else if (req.query && req.query.token) {
+            return req.query.token;
+        }
+        return null;
+    }
+}).unless({path: ['/users/authenticate', '/users/register']}));
+
+//routes
+app.use('/users', require('./controllers/user.controller'));
 
 app.use(function(req, res, next) {
 
@@ -74,12 +89,12 @@ app.use(function(req, res, next) {
 *   POST: creates a new user
 *
 */
-app.get("/api/user", function(req, res) {
+// app.get("/api/user", function(req, res) {
 
-})
+// })
 
-app.post('/api/user', function(req, res) {
-})
+// app.post('/api/user', function(req, res) {
+// })
 
 /* "/api/user/:id"
 *   GET: find user by id
@@ -87,29 +102,29 @@ app.post('/api/user', function(req, res) {
 *   DELETE: deletes user by id
 */
 
-app.get('/api/user/:id', function(req, res) {
-})
+// app.get('/api/user/:id', function(req, res) {
+// })
 
-app.put('/api/user/:id', function(req, res) {
-})
+// app.put('/api/user/:id', function(req, res) {
+// })
 
-app.delete('/api/user/:id', function(req, res) {
-})
+// app.delete('/api/user/:id', function(req, res) {
+// })
 //app.post('/api/users', (req, res) => { res.json(users); });
 
 //app.post('/api/user', (req, res) => { const user = req.body.user; users.push(user); res.json("user added"); });
 
-const forceSSL = function () {
-    return function (req, res, next) {
-        if (req.headers['x-forwarded-proto'] !== 'https') {
-            return res.redirect(
-                ['https://', req.get('Host'), req.url].join('')
-            );
-        }
-        next();
-     }
-}
-app.use(forceSSL());
+// const forceSSL = function () {
+//     return function (req, res, next) {
+//         if (req.headers['x-forwarded-proto'] !== 'https') {
+//             return res.redirect(
+//                 ['https://', req.get('Host'), req.url].join('')
+//             );
+//         }
+//         next();
+//      }
+// }
+// app.use(forceSSL());
 
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
 
