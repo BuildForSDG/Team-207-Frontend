@@ -9,7 +9,7 @@ const mysql = require('mysql')
 const passport = require('passport')
 const session = require('express-session')
 const dotenv = require('dotenv')
-//const environment = require('./src/environments/environment.prod')
+const environment = require('environments/environment')
 
 //const app = express()
 app.use(cors())
