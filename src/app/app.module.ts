@@ -12,8 +12,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { SharedModule } from './shared/shared.module';
 import { PartialsModule } from './partials/partials.module';
-import { Utils } from './core/utils';
-import { Constants } from './core/constants';
+//import { Utils } from './core/utils';
+//import { Constants } from './core/constants';
 import { JwtInterceptor } from './helpers';
 import { ErrorInterceptor }  from './helpers';
 import { AlertComponent } from './components';
@@ -49,7 +49,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     //StorageServiceModule,
   ],
   providers: [
-    Constants, Utils,
+   // Constants, Utils,
 
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
@@ -60,5 +60,3 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { };
-//export * from './luihome/luihome.component';
-// export * from './helpers';
