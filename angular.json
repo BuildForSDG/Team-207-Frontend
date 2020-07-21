@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/custom-webpack:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "customWebpackConfig": {
             "path": "./custom-webpack.config.js"
           },
@@ -68,7 +68,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/custom-webpack:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "src:build",
 			      "proxyConfig": "src/proxy.conf.json"
