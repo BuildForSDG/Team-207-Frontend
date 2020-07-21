@@ -69,7 +69,7 @@ app.use(expressJwt({
 }).unless({path: ['/users/authenticate', '/users/register']}));
 
 //routes
-app.use('/users', require('./controllers/user.controller'));
+app.use('/users', require('./src/app/controllers/user.controller'));
 
 app.use(function(req, res, next) {
 
