@@ -1,7 +1,7 @@
 const config = require('../../app/config')
 const express = require('express')
 const router = express.Router()
-const accountServices = require('../services/account.services')
+const accountServices = require('../services/account.services.ts')
 
 // routes
 router.post('/authenticate', authenticate)
