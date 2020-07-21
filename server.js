@@ -9,7 +9,7 @@ const mysql = require('mysql')
 const passport = require('passport')
 const session = require('express-session')
 const dotenv = require('dotenv')
-const environment = require('./src/environments/environment.ts')
+const config = require('./src/app/config')
 
 //const app = express()
 app.use(cors())
@@ -57,7 +57,7 @@ app.use(passport.initialize())
 
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(expressJwt({
-    secret: environment.secret,
+    secret: config.secret,
     getToken: function (req) {
         if (req.headers.authorization && req.headers.authorization.split('')[0] === 'Bearer') {
             return req.headers.authorization.split('')[1];
