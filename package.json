@@ -21,8 +21,8 @@
     "heroku-postbuild": "ng build --prod"
   },
   "author": {
-    "name": "Build For SDG",
-    "email": "buildforsdg@andela.com"
+    "name": "Samly Courage Panton",
+    "email": "smov.org@gmail.com"
   },
   "homepage": "https://github.com/BuildForSDG/js-starter#readme",
   "repository": {
