@@ -1,49 +1,83 @@
-const mysql = require('mysql');
-const User = mysql.model('User');
-const passport = require('passport');
-const _ = require('lodash');
+const config = require('../../app/config')
+const express = require('express')
+const router = express.Router()
+const accountServices = require('../services/account.services')
 
-module.exports.register = (req, res, next) => {
+// routes
+router.post('/authenticate', authenticate)
+router.post('/register', register)
+router.get('/', getAll)
+router.get('/current', getCurrent)
+router.put('/:_userId', update)
+router.delete('/:_userId', _delete);
 
-    const user = new User();
-    user.first_name = req.body.first_name;
-    user.last_name = req.body.last_name;
-    user.username = req.body.username;
-    user.email = req.body.email;
-    user.password = req.body.password;
-    user.save((err,doc) => {
-        if(!err) { res.send(doc)}
+module.exports = router;
 
-        else {
-            if(err.code == 11000)
-            res.status(422).ssend(['Duplicate email Address Found.'])
-            else return next(err);
-        }
-    })
+function authenticate(req, res) {
+    accountSercives(req.body.username, req.body.password)
+        .then(function (user) {
+            if (user) {
+                // authentication successful
+                res.send(user)
+            } else {
+                // authentication failed
+                res.status(400).send('Username or password is incorrect')
+            }
+        })
+        .catch(function (err) {
+            res.status(400).send(err)
+        });
 }
 
-module.exports.authenticate = (req, res, next ) => {
-    //call for passport authentication
-    passport.authenticate('local', (err, user, info) => {
-
-        //error from passport middleware
-        if(err) return res.status(400),json(err);
-
-        //register
-        else if (user) return res.status(200).json({ "token":user.generateJwt() });
-
-        //unknown user or wrong password
-        else return res.status(404).json(info);
-    })(req, res);
+function register(req, res) {
+    accountServices.create(req.body)
+        .then(function () {
+            res.json(success)
+        })
+        .catch(function (err) {
+            res.status(400).send(err)
+        });
 }
 
-module.exports.userProfile = (req, res, next) => {
+function getAll(req, res) {
+    accountServices.getAll()
+        .then(function (users) {
+            res.send(users)
+        })
+        .catch(function (err) {
+            res.status(400).send(err)
+        });
+}
 
-    User.findOne({ _id:req._id},(err, user) => {
-        if(!user)
-        return res.status(404).json({status: false,  message: 'User Not Found.'});
+function getCurrent(req, res) {
+    accountServices.getById(req.user.sub)
+        .then(function (user) {
+            if (user) {
+                res.send(user)
+            } else {
+                res.sendStatus(404)
+            }
+        })
+        .catch(function (err) {
+            res.status(400).send(err)
+        });
+}
 
-        else
-        return res.status(200).json({status:true, user : _.pick(user, ['firstname', 'lastname', 'username', 'email', 'password'])});
+function update(req, res) {
+    accountServices.update(req.params._userId, req.body)
+    .then(function () {
+        res.json('success')
     })
+    .catch(function (err) {
+        res.status(400).send(err)
+    });
+}
+function _delete (req, res) {
+    accountServices.delete(req.params._userId)
+    .then(function () {
+        res.json('success')
+    })
+    .catch(function (err) {
+        res.status(400).send(err);
+    });
 }
