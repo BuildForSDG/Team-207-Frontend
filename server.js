@@ -1,25 +1,25 @@
-const path = require('path');
-const express = require('express')
+import { join } from 'path';
+import express, { static } from 'express';
 const app = express()
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const expressJwt = require('express-jwt')
-const http = require('http')
-const mysql = require('mysql')
-const passport = require('passport')
-const session = require('express-session')
-const dotenv = require('dotenv')
-const config = require('./src/app/config')
+import cors from 'cors';
+import { json } from 'body-parser';
+import expressJwt from 'express-jwt';
+import { createServer } from 'http';
+import { createConnection } from 'mysql';
+import { initialize } from 'passport';
+import session from 'express-session';
+import { config as _config } from 'dotenv';
+import config from './src/app/config';
 
 //const app = express()
 app.use(cors())
-app.use(bodyParser.json())
+app.use(json())
 
-dotenv.config();
+_config();
 
 
 //connect to mysql
-const connection = mysql.createConnection ({
+const connection = createConnection ({
     host : 'us-cdbr-east-05.cleardb.net',
     port : '3306',
     database : 'heroku_ffad0d173f051f2',
@@ -42,12 +42,12 @@ const PORT = process.env.PORT || 4200;
 
 //app.use(express.static(path.join(__dirname, './dist')));
 
-app.use(express.static(__dirname + '/dist/banking-insurance'))
+app.use(static(__dirname + '/dist/banking-insurance'))
 
 //middleware
 //app.use(bodyParser.urlencoded({extended: false }))
 //app.use(cors())
-app.use(passport.initialize())
+app.use(initialize())
 //app.use(bodyParser.json())
 
 //app.use('/api', authRouter)
@@ -126,9 +126,9 @@ app.use(function(req, res, next) {
 // }
 // app.use(forceSSL());
 
-app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
+app.get('/*', (req, res) => res.sendFile(join(__dirname)));
 
-const server = http.createServer(app);
+const server = createServer(app);
 
 server.listen(PORT, function () { console.log("App runs on port "+ port );
 });
