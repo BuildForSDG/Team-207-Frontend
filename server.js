@@ -57,7 +57,7 @@ app.use(passport.initialize())
 
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(expressJwt({
-    secret: secret, algorithms: ['RS256'],
+    secret: secret.config, algorithms: ['RS256'],
     getToken: function (req) {
         if (req.headers.authorization && req.headers.authorization.split('')[0] === 'Bearer') {
             return req.headers.authorization.split('')[1];
