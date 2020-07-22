@@ -14,7 +14,7 @@
     "test": "__tests__"
   },
   "scripts": {
-    "build": "babel server.js -d dist",
+    "build": "webpack --config webpack.config.js",
     "server": "webpack-dashboard-- webpack-dev-server --inline --port 4000",
     "webdriver-update": "webdriver-manager update",
     "ng": "ng",
@@ -89,7 +89,9 @@
     "protractor": "^7.0.0",
     "ts-node": "~8.10.2",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.7"
+    "typescript": "~3.9.7",
+    "webpack": "^5.0.0-beta.22",
+    "webpack-cli": "^3.3.12"
   },
   "browserslist": [
     "last 1 Chrome versions"
