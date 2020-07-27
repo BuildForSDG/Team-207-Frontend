@@ -13,7 +13,6 @@
     "test": "__tests__"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js",
     "server": "webpack-dashboard-- webpack-dev-server --inline --port 4000",
     "webdriver-update": "webdriver-manager update",
     "ng": "ng",
