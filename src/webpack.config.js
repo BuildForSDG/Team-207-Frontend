@@ -14,10 +14,18 @@ module.exports = {
             {
                 test: /\.(html|css)$/,
                 use: 'raw-loader'
+            },
+            {
+                test: /\.css$/,
+                use:  [
+                    'to-string-loader', 'css-loader',
+                ],
             }
         ]
     },
+    devServer: { writeToDisk: true },
     plugins: [
-        new HtmlWebpackPlugin({ template: ',/src/index.html' })
+        new HtmlWebpackPlugin({ template: './src/index.html' }),
+        webpackConfig.plugins = [ HtmlWebpackPlugin, ]
     ]
 }
