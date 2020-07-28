@@ -1,8 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const webpack = require('webpack')
 
 module.exports = {
-    entry: './src/maint.ts',
+    entry: './src/main.ts',
     resolve: {
         extensions: ['.ts', '.js']
     },
